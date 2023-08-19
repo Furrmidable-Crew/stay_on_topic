@@ -1,10 +1,10 @@
 {
-    "name": "My plugin",
+    "name": "Stay On Topic",
     "version": "0.0.1",
-    "description": "Description of my_plugin.",
-    "author_name": "Me",
-    "author_url": "https://mywebsite.me",
-    "plugin_url": "https://github.com/my_name/my_plugin",
-    "tags": "cat, template, example",
-    "thumb": "https://raw.githubusercontent.com/my_repo_path/my_plugin.png"
+    "description": "This plugin provides a set of methods to control the LLM output and help you chatbot to stay on given topic.",
+    "author_name": "Nicola Corbellini",
+    "author_url": "",
+    "plugin_url": "https://github.com/my_name/stay_on_topic",
+    "tags": "cat, stay on topic, chatbot, prompt injection",
+    "thumb": ""
 }
