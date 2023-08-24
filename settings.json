@@ -1,0 +1,8 @@
+{
+    "prompt": true,
+    "prior_check": false,
+    "memory_filter": true,
+    "posterior_check": true,
+    "n_memories": 8,
+    "threshold": 0.8
+}

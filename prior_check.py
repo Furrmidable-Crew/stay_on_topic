@@ -1,33 +1,50 @@
 import random
 
 from cat.mad_hatter.decorators import hook
-from cat.plugins.stay_on_topic.setting import MySettings
-
-settings = MySettings()
-
-
-@hook
-def before_cat_reads_message(user_message_json, cat):
-    if settings["prior_check"]:
-        prompt_check = f"""
-        Is this sentence about the Cheshire Cat documentation?
-        Answer yes or no.
-        Sentence
-        --------
-        {user_message_json["text"]}
-        """
-        answer = cat.llm(prompt_check).lower()
-
-        cat.working_memory["prior_check"] = True
-        if answer == "no":
-            cat.working_memory["prior_check"] = False
 
 
 @hook
 def before_agent_starts(agent_input, cat):
-    if settings["prior_check"] and "prior_check" in cat.working_memory:
-        if cat.working_memory["prior_check"]:
-            answers = ["I can't talk about this",
-                       "A plugin obliges me to stay on topic"]
+    settings = cat.mad_hatter.plugins["stay_on_topic"].load_settings()
 
-            return random.choice(answers)
+    num_declarative_memories = len(cat.working_memory["declarative_memories"])
+
+    if settings["memory_filter"] and num_declarative_memories == 0:
+        return {
+            "output": random.choice([
+                "Sorry, I have no memories about that.",
+                "I can't help you on this topic.",
+                "A plugin oblige me to stay on topic.",
+                "I can't talk about that."
+            ])
+        }
+
+    if settings["prior_check"]:
+        answer = cat.llm(f"""Rewrite the sentence in a JSON with this format:
+                            {{  
+                                'cheshire_cat': here the parts of the sentence related to the context, otherwise None
+                                'other': here the parts of the sentence not related to the context, otherwise None
+                            }}
+                        SENTENCE --> {cat.working_memory["user_message_json"]["text"]}
+                        CONTEXT --> {agent_input["declarative_memory"]}
+                    """)
+        from cat.log import log
+        log(answer, "ERROR")
+        answer = answer.replace("null", "None")
+        agent_input["input"] = eval(answer)["cheshire_cat"]
+        cat.working_memory["prior_check"] = eval(answer)
+
+        return None
+
+
+    # elif settings["prior_check"] and "prior_check" in cat.working_memory:
+    #     if cat.working_memory["prior_check"]:
+    #         return {
+    #             "output": random.choice([
+    #                 "Sorry, I have no memories about that.",
+    #                 "I can't help you on this topic.",
+    #                 "A plugin oblige me to stay on topic.",
+    #                 "I can't talk about that."
+    #             ])
+    #         }
+
