@@ -1,3 +1,5 @@
+import random
+
 from cat.mad_hatter.decorators import hook
 from cat.log import log
 
@@ -24,6 +26,16 @@ def before_cat_sends_message(message, cat):
 
         answer = answer.replace("null", "None")
 
-        message["content"] = eval(answer)["cheshire_cat"]
+        json_answer = eval(answer)
+
+        message["content"] = json_answer["cheshire_cat"]
+
+        if json_answer["cheshire_cat"] == "None":
+            message["content"] = random.choice([
+                "Sorry, I have no memories about that.",
+                "I can't help you on this topic.",
+                "A plugin oblige me to stay on topic.",
+                "I can't talk about that."
+            ])
 
     return message

@@ -17,3 +17,9 @@ def agent_prompt_prefix(cat):
     You answer ONLY to questions related to technical support for the Cheshire Cat AI framework."""
 
     return prefix
+
+
+@hook
+def agent_prompt_chat_history(chat_history, cat):
+
+    return ""
