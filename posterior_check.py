@@ -49,7 +49,7 @@ def before_cat_sends_message(message, cat):
 
         answer = chain.run({"context": context,
                             "text": message["content"]})
-
+        log(answer, "CRITICAL")
         output_dict = output_parser.parse(answer)
         log(output_dict, "CRITICAL")
 

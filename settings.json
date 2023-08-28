@@ -1,5 +1,5 @@
 {
-    "prompt": false,
+    "prompt": true,
     "prior_check": false,
     "memory_filter": true,
     "posterior_check": true,

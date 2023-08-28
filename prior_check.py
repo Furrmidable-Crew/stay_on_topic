@@ -57,25 +57,25 @@ def before_agent_starts(agent_input, cat):
     #     answer = chain.run({"context": agent_input["declarative_memory"],
     #                        "text": cat.working_memory["user_message_json"]["text"]})
     #     log(answer, "CRITICAL")
-        # answer = cat.llm(f"""I'll give you a sentence, you should split it a JSON structure with this keys and values:
-        #                     {{
-        #                         'cheshire_cat': the parts of the sentence related to the context, otherwise None
-        #                         'other': the parts of the sentence not related to the context, otherwise None
-        #                     }}
-        #                 SENTENCE --> {cat.working_memory["user_message_json"]["text"]}
-        #                 CONTEXT --> {agent_input["declarative_memory"]}
-        #             """)
-        # from cat.log import log
-        # answer = answer.replace("null", "None")
-        # json_answer = eval(answer)
-        # log(answer, "ERROR")
-        # if json_answer["cheshire_cat"] == "None":
-        #     return {
-        #         "output": out_of_topic_answer
-        #     }
-        # agent_input["input"] = json_answer["cheshire_cat"]
-
-        return None
+    #     answer = cat.llm(f"""I'll give you a sentence, you should split it a JSON structure with this keys and values:
+    #                         {{
+    #                             'cheshire_cat': the parts of the sentence related to the context, otherwise None
+    #                             'other': the parts of the sentence not related to the context, otherwise None
+    #                         }}
+    #                     SENTENCE --> {cat.working_memory["user_message_json"]["text"]}
+    #                     CONTEXT --> {agent_input["declarative_memory"]}
+    #                 """)
+    #     from cat.log import log
+    #     answer = answer.replace("null", "None")
+    #     json_answer = eval(answer)
+    #     log(answer, "ERROR")
+    #     if json_answer["cheshire_cat"] == "None":
+    #         return {
+    #             "output": out_of_topic_answer
+    #         }
+    #     agent_input["input"] = json_answer["cheshire_cat"]
+    #
+    #     return None
 
 
     # elif settings["prior_check"] and "prior_check" in cat.working_memory:
