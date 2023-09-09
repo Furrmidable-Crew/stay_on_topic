@@ -3,12 +3,11 @@ from cat.mad_hatter.decorators import hook
 
 
 class MySettings(BaseModel):
-    prompt: bool = True
-    prior_check: bool = False
-    memory_filter: bool = False
-    posterior_check: bool = False
+    memory_filter: bool = True
     n_memories: int = 8
     threshold: float = 0.8
+    posterior_check: bool = False
+    topic_description: str = ""
 
 
 @hook

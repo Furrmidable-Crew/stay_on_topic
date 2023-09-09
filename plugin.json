@@ -1,10 +1,10 @@
 {
     "name": "Stay On Topic",
     "version": "0.0.1",
-    "description": "This plugin provides a set of methods to control the LLM output and help you chatbot to stay on given topic.",
+    "description": "This plugin provides a set of methods to control the LLM output and help your chatbot to stay on given topic.",
     "author_name": "Nicola Corbellini",
     "author_url": "",
-    "plugin_url": "https://github.com/my_name/stay_on_topic",
+    "plugin_url": "https://github.com/nicola-corbellini/stay_on_topic",
     "tags": "cat, stay on topic, chatbot, prompt injection",
     "thumb": ""
 }
