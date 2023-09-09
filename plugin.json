@@ -1,6 +1,6 @@
 {
     "name": "Stay On Topic",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "This plugin provides a set of methods to control the LLM output and help your chatbot to stay on given topic.",
     "author_name": "Nicola Corbellini",
     "author_url": "",
