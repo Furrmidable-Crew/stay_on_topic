@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from cat.mad_hatter.decorators import hook
+from cat.mad_hatter.decorators import plugin
 
 
 class MySettings(BaseModel):
@@ -10,6 +10,6 @@ class MySettings(BaseModel):
     topic_description: str = ""
 
 
-@hook
-def plugin_settings_schema():
+@plugin
+def settings_schema():
     return MySettings.schema()
